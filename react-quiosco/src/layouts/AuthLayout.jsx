@@ -1,9 +1,16 @@
-import {Outlet} from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
 export default function AuthLayout() {
   return (
-    <div>
-      AuthLayout
-      <Outlet/>
-    </div>
-  )
+    <main className='max-w-4xl m-auto mt-10 md:mt-28 flex flex-col md:flex-row items-center'>
+      <img
+        src='../img/logo.svg'
+        alt='imagen logotipo'
+        className='max-w-xs'
+      />
+
+      <div>
+        <Outlet className='p-10 w-full'/>
+      </div>
+    </main>
+  );
 }

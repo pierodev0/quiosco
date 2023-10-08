@@ -8,8 +8,8 @@ export default function AuthLayout() {
         className='max-w-xs'
       />
 
-      <div>
-        <Outlet className='p-10 w-full'/>
+      <div className='p-10 w-full'>
+        <Outlet/>
       </div>
     </main>
   );

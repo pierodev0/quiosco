@@ -1,9 +1,8 @@
-import React from 'react';
-
-import { categorias } from '../data/categorias.js';
 import Categoria from './Categoria.jsx';
+import useQuiosco from '../hooks/useQuiosco.js';
 
 export default function Sidebar() {
+  const {categorias} = useQuiosco();
   return (
     <aside className='md:w-72'>
       <div>

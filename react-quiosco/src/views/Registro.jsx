@@ -65,6 +65,11 @@ export default function Registro() {
               placeholder='repetir password'
             />
           </div>
+          <input
+            type='submit'
+            value='Crear cuenta'
+            className='bg-indigo-600 mt-5 hover:bg-indigo-800 text-white w-full p-3 rounded-md font-bold uppercase  cursor-pointer'
+          />
         </form>
       </div>
     </>

@@ -4,7 +4,7 @@ import './index.css'
 
 import {RouterProvider} from 'react-router-dom';
 import router from './router';
-import QuioscoProvider from './context/QuioscoProvider';
+import {QuioscoProvider} from './context/QuioscoProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

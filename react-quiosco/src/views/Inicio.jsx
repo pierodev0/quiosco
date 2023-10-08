@@ -1,7 +1,11 @@
 import Producto from '../components/Producto';
 import { productos } from '../data/products';
+import useQuiosco from '../hooks/useQuiosco';
 
 export default function Inicio() {
+
+   const {hola} = useQuiosco();
+   
   return (
     <>
       <h1 className='text-4xl font-black'>Inicio</h1>

@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 export default function Login() {
   return (
     <>
-      <h1 className='text-4xl font-black'>Crea tu cuenta</h1>
-      <p>Crea tu cuenta llenando el formulario</p>
+      <h1 className='text-4xl font-black'>Iniciar Sesión</h1>
+      <p>Para crear un pedido debes iniciar sesion</p>
       <div className='bg-white shadow-md rounded-md mt-10 px-5 py-10'>
         <form action=''>
           <div className='mb-4'>
@@ -42,6 +44,9 @@ export default function Login() {
           />
         </form>
       </div>
+      <nav className='mt-5'>
+        <Link to='/auth/registro '>¿No tienes cuenta? Crea una</Link>
+      </nav>
     </>
   );
 }

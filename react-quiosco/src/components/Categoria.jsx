@@ -11,7 +11,7 @@ export default function Categoria({ categoria }) {
         alt='Imagen icono'
         className='w-12'
       />
-      <button type='button' className="font-bold truncate" onClick={handleClickCategoria}>{nombre}</button>
+      <button type='button' className="font-bold truncate" onClick={()=> handleClickCategoria(id)}>{nombre}</button>
     </div>
   );
 }

@@ -8,8 +8,9 @@ const QuioscoProvider = ({ children }) => {
   const [categoriaActual, setCategoriaActual] = useState(categorias[0]);
 
 
-  const handleClickCategoria = () => {
-   console.log("click en categoria")
+  const handleClickCategoria = (id) => {
+    const categoria = categorias.filter(categoria => categoria.id === id);
+    setCategoriaActual(categoria[0]);
   }
 
   return (

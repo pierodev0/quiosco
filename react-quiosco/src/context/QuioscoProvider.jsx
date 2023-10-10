@@ -31,6 +31,7 @@ const QuioscoProvider = ({ children }) => {
         handleClickCategoria,
         modal,
         handleClickModal,
+        producto,
         handleSetProducto
       }}
     >

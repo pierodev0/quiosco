@@ -1,3 +1,4 @@
+import { formatearDinero } from '../helpers';
 import useQuiosco from '../hooks/useQuiosco';
 
 export default function ModalProducto() {
@@ -32,6 +33,11 @@ export default function ModalProducto() {
               />
             </svg>
           </button>
+        </div>
+        <div className='flex flex-col gap-3 items-start'>
+            <h1 className='text-2xl font-bold'>{nombre}</h1>
+            <p className='font-black text-5xl text-amber-500'>{formatearDinero(precio)}</p>
+            <button className='btn-primary'>Agregar al pedido</button>
         </div>
       </div>
     </div>

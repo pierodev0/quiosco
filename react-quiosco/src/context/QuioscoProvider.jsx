@@ -6,6 +6,7 @@ const QuiscoContext = createContext();
 const QuioscoProvider = ({ children }) => {
   const [categorias, setCategorias] = useState(categoriasDB);
   const [categoriaActual, setCategoriaActual] = useState(categorias[0]);
+  const [modal, setModal] = useState(false)
 
 
   const handleClickCategoria = (id) => {
@@ -13,8 +14,12 @@ const QuioscoProvider = ({ children }) => {
     setCategoriaActual(categoria[0]);
   }
 
+  const handleClickModal = () => {
+    setModal(!modal);
+  }
+
   return (
-    <QuiscoContext.Provider value={{ categorias, categoriaActual,handleClickCategoria }}>
+    <QuiscoContext.Provider value={{ categorias, categoriaActual,handleClickCategoria,modal,handleClickModal }}>
       {children}
     </QuiscoContext.Provider>
   );

@@ -2,7 +2,7 @@ import { formatearDinero } from '../helpers';
 import useQuiosco from '../hooks/useQuiosco';
 export default function Producto({ producto }) {
   const { nombre, imagen, precio } = producto;
-  const {handleClickModal} =  useQuiosco();
+  const { handleClickModal, handleSetProducto } = useQuiosco();
 
   return (
     <div className='border p-3 shadow bg-white flex flex-col'>
@@ -16,7 +16,13 @@ export default function Producto({ producto }) {
         <p className='font-black text-4xl text-amber-500'>
           {formatearDinero(precio)}
         </p>
-        <button className='bg-indigo-600 hover:bg-indigo-800 mt-auto text-white w-full p-3 uppercase font-bold' onClick={()=> handleClickModal()}>
+        <button
+          className='bg-indigo-600 hover:bg-indigo-800 mt-auto text-white w-full p-3 uppercase font-bold'
+          onClick={() => {
+            handleClickModal();
+            handleSetProducto(producto);
+          }}
+        >
           Agregar
         </button>
       </div>

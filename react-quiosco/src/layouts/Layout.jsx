@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import Sidebar from '../components/Sidebar';
 import Resumen from '../components/Resumen';
 import useQuiosco from '../hooks/useQuiosco';
+import ModalProducto from '../components/ModalProducto';
 
 const customStyles = {
   content: {
@@ -14,6 +15,8 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
   },
 };
+
+Modal.setAppElement('#root');
 
 export default function Layout() {
   const { modal, handleClickModal } = useQuiosco();
@@ -28,15 +31,12 @@ export default function Layout() {
         <Resumen />
       </div>
 
-      {modal && (
-        <Modal
-          isOpen={modal}
-          style={customStyles}
-        >
-          <button onClick={handleClickModal}>Cerrar modal</button>
-          <p>Modal</p>
-        </Modal>
-      )}
+      <Modal
+        isOpen={modal}
+        style={customStyles}
+      >
+        <ModalProducto />
+      </Modal>
     </>
   );
 }

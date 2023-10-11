@@ -3,7 +3,7 @@ import { formatearDinero } from '../helpers';
 import useQuiosco from '../hooks/useQuiosco';
 
 export default function ModalProducto() {
-  const { producto, handleClickModal } = useQuiosco();
+  const { producto, handleClickModal,handleAgregarPedido } = useQuiosco();
   const { imagen, nombre, precio } = producto;
 const [cantidad,setCantidad] = useState(1);
 
@@ -84,7 +84,7 @@ const [cantidad,setCantidad] = useState(1);
               </svg>
             </button>
           </div>
-          <button className='btn-primary'>Agregar al pedido</button>
+          <button className='btn-primary' onClick={() => handleAgregarPedido({...producto,cantidad})}>Agregar al pedido</button>
         </div>
       </div>
     </div>

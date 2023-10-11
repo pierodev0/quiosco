@@ -84,7 +84,7 @@ const [cantidad,setCantidad] = useState(1);
               </svg>
             </button>
           </div>
-          <button className='btn-primary' onClick={() => handleAgregarPedido({...producto,cantidad})}>Agregar al pedido</button>
+          <button className='btn-primary' onClick={() => {handleAgregarPedido({...producto,cantidad}); handleClickModal()}}>Agregar al pedido</button>
         </div>
       </div>
     </div>

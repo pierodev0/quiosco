@@ -1,5 +1,7 @@
 import { createContext, useState } from 'react';
 import { categorias as categoriasDB } from '../data/categorias';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 
 const QuiscoContext = createContext();
@@ -30,8 +32,10 @@ const QuioscoProvider = ({ children }) => {
         pedidoState.id === producto.id ? producto : pedidoState,
       );
       setPedido(pedidoActualizado);
+      toast.success('Guardado correctamente')
     } else {
       setPedido([...pedido, producto]);
+      toast.success('Agregado al pedido')
     }
   };
 

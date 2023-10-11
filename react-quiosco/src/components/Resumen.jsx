@@ -1,9 +1,10 @@
 import React from 'react';
 import useQuiosco from '../hooks/useQuiosco';
 import ResumenProducto from './ResumenProducto';
+import { formatearDinero } from '../helpers';
 
 export default function Resumen() {
-  const { pedido } = useQuiosco();
+  const { pedido,total } = useQuiosco();
   return (
     <aside className='md:w-72 h-screen overflow-x-scroll p-5'>
       <h1 className='text-4xl font-black'>Mi pedido</h1>
@@ -17,7 +18,7 @@ export default function Resumen() {
           pedido.map(producto =>  <ResumenProducto producto={producto} key={producto.id}/>)
         )}
 
-        <p className='my-5 text-xl'>Total: {''}</p>
+        <p className='my-5 text-xl'>Total: {formatearDinero(total)}</p>
         <form action="" className='flex flex-col gap-5'>
           <div>
             <input type="submit" value="Confirmar pedido"  className='btn-primary w-full'/>

@@ -4,7 +4,10 @@ import ResumenProducto from './ResumenProducto';
 import { formatearDinero } from '../helpers';
 
 export default function Resumen() {
-  const { pedido,total } = useQuiosco();
+  const { pedido, total } = useQuiosco();
+
+  const comprobarPedido = () => pedido.length === 0;
+  console.log(comprobarPedido())
   return (
     <aside className='md:w-72 h-screen overflow-x-scroll p-5'>
       <h1 className='text-4xl font-black'>Mi pedido</h1>
@@ -15,13 +18,28 @@ export default function Resumen() {
         {pedido.length === 0 ? (
           <p>No hay elementos en tu pedido aun</p>
         ) : (
-          pedido.map(producto =>  <ResumenProducto producto={producto} key={producto.id}/>)
+          pedido.map((producto) => (
+            <ResumenProducto
+              producto={producto}
+              key={producto.id}
+            />
+          ))
         )}
 
         <p className='my-5 text-xl'>Total: {formatearDinero(total)}</p>
-        <form action="" className='flex flex-col gap-5'>
+        <form
+          action=''
+          className='flex flex-col gap-5'
+        >
           <div>
-            <input type="submit" value="Confirmar pedido"  className='btn-primary w-full'/>
+            <input
+              type='submit'
+              value='Confirmar pedido'
+              className={`btn-primary w-full ${
+                comprobarPedido() ? '!bg-indigo-100 cursor-not-allowed' : ''
+              }`}
+              disabled={comprobarPedido()}
+            />
           </div>
         </form>
       </div>

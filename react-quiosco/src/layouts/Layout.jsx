@@ -19,8 +19,7 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 export default function Layout() {
-  const { modal, handleClickModal } = useQuiosco();
-  console.log(modal);
+  const { modal } = useQuiosco();
   return (
     <>
       <div className='md:flex'>

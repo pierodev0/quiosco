@@ -1,17 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { formatearDinero } from '../helpers';
 import useQuiosco from '../hooks/useQuiosco';
 
 export default function ModalProducto() {
-  const { producto, handleClickModal } = useQuiosco();
+  const { producto, handleClickModal, handleAgregarPedido, pedido } =
+    useQuiosco();
   const { imagen, nombre, precio } = producto;
-const [cantidad,setCantidad] = useState(1);
+  const [cantidad, setCantidad] = useState(1);
+  const [edicion, setEdicion] = useState(false);
+
+  useEffect(() => {
+    if (pedido.some((pedidoState) => pedidoState.id === producto.id)) {
+      const productoEdicion = pedido.filter(
+        (pedidoState) => pedidoState.id === producto.id,
+      )[0];
+      setCantidad(productoEdicion.cantidad);
+      setEdicion(true)
+    }
+  }, [pedido]);
 
   return (
     <div className='flex flex-col md:flex-row p-6 md:p-3 gap-4 md:gap-10 relative md:static'>
       <div className='md:w-1/2'>
         <img
-        className='h-[300px] md:h-auto w-full object-contain'
+          className='h-[300px] md:h-auto w-full object-contain'
           src={`/public/img/${imagen}.jpg`}
           alt={`producto ${nombre}`}
         />
@@ -44,10 +56,12 @@ const [cantidad,setCantidad] = useState(1);
             {formatearDinero(precio)}
           </p>
           <div className='flex gap-4'>
-            <button onClick={() =>{
-                if(cantidad <= 1) return
-                setCantidad(cantidad - 1)
-            }}>
+            <button
+              onClick={() => {
+                if (cantidad <= 1) return;
+                setCantidad(cantidad - 1);
+              }}
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
@@ -64,10 +78,12 @@ const [cantidad,setCantidad] = useState(1);
               </svg>
             </button>
             <p className='text-2xl'>{cantidad}</p>
-            <button onClick={() => {
-                if(cantidad >= 5) return
-                setCantidad(cantidad + 1)
-            }}>
+            <button
+              onClick={() => {
+                if (cantidad >= 5) return;
+                setCantidad(cantidad + 1);
+              }}
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
@@ -84,7 +100,15 @@ const [cantidad,setCantidad] = useState(1);
               </svg>
             </button>
           </div>
-          <button className='btn-primary'>Agregar al pedido</button>
+          <button
+            className='btn-primary'
+            onClick={() => {
+              handleAgregarPedido({ ...producto, cantidad });
+              handleClickModal();
+            }}
+          >
+            {edicion ? 'Guardar cambios' : 'Agregar al pedido'}
+          </button>
         </div>
       </div>
     </div>
